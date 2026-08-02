@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.airroi/mcp",
+  "title": "AirROI",
+  "description": "Airbnb & short-term rental analytics: occupancy, ADR, RevPAR, revenue, comparables, estimates",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.airroi.com/mcp-server",
+  "repository": {
+    "url": "https://github.com/airroi/airroi-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://www.airroi.com/static/airroi-192x192-square.png",
+      "mimeType": "image/png",
+      "sizes": ["384x384"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.airroi.com",
+      "headers": [
+        {
+          "name": "X-API-KEY",
+          "description": "AirROI API key. Get one free at https://www.airroi.com/api",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
