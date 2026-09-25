@@ -4,12 +4,12 @@ This file is for an AI coding agent (Cline, Cursor, Claude Code, etc.) installin
 
 ## What this server is
 
-AirROI's **remote** MCP server: Airbnb / short-term-rental market analytics (occupancy, ADR, RevPAR, revenue, comparables, ML revenue estimates) for 30,000+ markets, backed by 20M+ tracked listings.
+AirROI's **remote** MCP server: Airbnb / short-term-rental market analytics (occupancy, ADR, RevPAR, revenue, comparables, ML revenue estimates) for 30,000+ markets, backed by 20M+ tracked listings. It also returns live Airbnb calendars, rates, availability and search rank, and price recommendations.
 
 - Endpoint: `https://mcp.airroi.com`
 - Transport: Streamable HTTP
 - Auth: `X-API-KEY` request header
-- Tools: 22 (all prefixed `airroi_`)
+- Tools: 29 (all prefixed `airroi_`)
 
 **There is nothing to clone, build, install, or run.** Do not `git clone` this repo, do not `npm install`, do not create a local process. Installation is purely a config-file edit that registers a remote HTTP endpoint.
 
@@ -57,7 +57,6 @@ Merge into `~/.cursor/mcp.json` (user-level) or `.cursor/mcp.json` (project-leve
 {
   "mcpServers": {
     "airroi": {
-      "type": "streamable-http",
       "url": "https://mcp.airroi.com",
       "headers": {
         "X-API-KEY": "YOUR_API_KEY"
@@ -101,7 +100,7 @@ Transport `Streamable HTTP`, URL `https://mcp.airroi.com`, header `X-API-KEY: <u
 ## Step 3: Reload and verify
 
 1. Restart / reload the MCP client so it picks up the new config.
-2. Confirm the server connects and lists **22 tools**, all named `airroi_*`.
+2. Confirm the server connects and lists **29 tools**, all named `airroi_*`.
 3. Smoke test with a cheap call, e.g. `airroi_search_markets` with query `"Austin"`, or `airroi_market_summary` for a resolved market. A successful response confirms the key and transport.
 
 ## Troubleshooting
@@ -112,7 +111,7 @@ Transport `Streamable HTTP`, URL `https://mcp.airroi.com`, header `X-API-KEY: <u
 | Header rejected in Claude Code | The `--header` value must include the name: `"X-API-KEY: abc123"`, not just `"abc123"` |
 | Server not listed after edit | Client wasn't reloaded, or the JSON is malformed / the entry was placed under the wrong root key (`servers` vs `mcpServers`) |
 | Zero tools discovered | Client is not using Streamable HTTP. Confirm the transport/type field matches the client's expected value |
-| Claude Desktop can't connect | Claude Desktop needs the `mcp-remote` bridge (`npx mcp-remote https://mcp.airroi.com --header "X-API-KEY: ..."`); Node.js required |
+| Claude Desktop can't connect | Claude Desktop needs the `mcp-remote` bridge (`npx mcp-remote https://mcp.airroi.com --header X-API-KEY:${AIRROI_API_KEY}`, no spaces around the colon); Node.js required |
 
 ## Security notes
 
@@ -123,4 +122,6 @@ Transport `Streamable HTTP`, URL `https://mcp.airroi.com`, header `X-API-KEY: <u
 
 - Setup guide: https://www.airroi.com/mcp-server/setup
 - Tools reference: https://www.airroi.com/mcp-server/tools
+- Claude setup: https://www.airroi.com/mcp-server/claude
+- Codex setup: https://www.airroi.com/mcp-server/codex
 - Registry name: `com.airroi/mcp`
