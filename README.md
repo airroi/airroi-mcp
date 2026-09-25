@@ -28,8 +28,8 @@ This repository is documentation only. The server is fully remote at `https://mc
 
 | You want to… | Server type | Examples | AirROI? |
 |---|---|---|---|
-| Find a place to stay | Listing-search scraper | openbnb `mcp-server-airbnb`, Apify, Bright Data | No |
-| Run your own listings (messages, reservations, calendars, prices) | Property-management or pricing server | Hospitable, Guesty, PriceLabs, Wheelhouse | No |
+| Find a place to stay | Listing-search scraper | Apify, Bright Data | No |
+| Run your own listings (messages, reservations, calendars) | Property-management server | Hospitable, Guesty | No |
 | Analyze a market, a property or a comp set | Market-data MCP | **AirROI** | **Yes** |
 
 A side-by-side comparison with pricing and limitations: https://www.airroi.com/mcp-server/compare
@@ -198,7 +198,7 @@ npx mcp-remote https://mcp.airroi.com --header X-API-KEY:${AIRROI_API_KEY}
 
 ## A real session
 
-Prompt, run on 2026-09-25 against `mcp.airroi.com`:
+Prompt, run against the live server at `mcp.airroi.com`:
 
 > Compare Austin and Nashville for a 2-bedroom entire-home Airbnb: occupancy, ADR, RevPAR, annual revenue, and how many competing listings I'd face.
 
@@ -295,13 +295,6 @@ Price list: https://www.airroi.com/api/pricing
 - Monthly occupancy, ADR, RevPAR and revenue with p25/p50/p75/p90 percentiles, up to 60 months per request
 - Live Airbnb calendars, rates, availability and search rank, up to 12 months ahead
 - Native currencies, or USD on request
-
-## What's new
-
-- **2026-09-24** · Short-stay cleaning fees: Live calendar and listing tools return the host's cleaning fee for 1–2 night stays alongside the standard cleaning fee.
-- **2026-09-23** · Cleaning fees on the live calendar: airroi_live_calendar returns the cleaning fee set by the host; nightly rates exclude it.
-- **2026-09-22** · Five live Airbnb tools: Live calendar, rates, availability, search ranking and polygon scan replaced the future-rates tool.
-- **2026-09-08** · Price recommendations: airroi_recommend_base_price and airroi_recommend_calendar_prices expose the pricing engine through MCP.
 
 ## Links
 
